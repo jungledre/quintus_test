@@ -166,6 +166,12 @@
             }
         });
 
+        Q.Sprite.extend("BigCat", {
+            init: function(p) {
+                this._super(p, {asset: "cat_big.png"});
+            }
+        });
+
         //setup level 1, @TODO make it so that it could be multiple levels?
         Q.scene("level1",function(stage) {
 
@@ -178,21 +184,27 @@
 
             //level assets. format must be as shown: [[ClassName, params], .. ]
             var levelAssets = [
-                ["GroundEnemy", {x: 18*70, y: 6*70, asset: "slime.png"}],
-                ["VerticalEnemy", {x: 800, y: 120, rangeY: 70, asset: "fly.png"}],
-                ["VerticalEnemy", {x: 1080, y: 120, rangeY: 80, asset: "fly.png"}],
-                ["GroundEnemy", {x: 6*70, y: 3*70, asset: "slime.png"}],
-                ["GroundEnemy", {x: 8*70, y: 70, asset: "slime.png"}],
-                ["GroundEnemy", {x: 18*70, y: 120, asset: "slime.png"}],
-                ["GroundEnemy", {x: 12*70, y: 120, asset: "slime.png"}],
+                ["GroundEnemy", {x: 18*70, y: 6*70, asset: "nyan.png"}],
+                ["VerticalEnemy", {x: 800, y: 120, rangeY: 70, asset: "beedog.png"}],
+                ["VerticalEnemy", {x: 1080, y: 120, rangeY: 80, asset: "beedog.png"}],
+                ["GroundEnemy", {x: 6*70, y: 3*70, asset: "nyan.png"}],
+                ["GroundEnemy", {x: 8*70, y: 70, asset: "nyan.png"}],
+                // ["GroundEnemy", {x: 18*70, y: 120, asset: "nyan.png"}],
+                // ["GroundEnemy", {x: 12*70, y: 120, asset: "nyan.png"}],
+                ["VerticalEnemy", {x: 2700, y: 120, rangeY: 70, asset: "beedog.png"}],
+                ["VerticalEnemy", {x: 2580, y: 120, rangeY: 80, asset: "beedog.png"}],
+                ["VerticalEnemy", {x: 2280, y: 120, rangeY: 80, asset: "beedog.png"}],
+                ["VerticalEnemy", {x: 2080, y: 120, rangeY: 80, asset: "beedog.png"}],
+                ["GroundEnemy", {x: 16*70, y: 3*70, asset: "nyan.png"}],
+                ["GroundEnemy", {x: 20*70, y: 70, asset: "nyan.png"}],
                 ["Coin", {x: 300, y: 100}],
                 ["Coin", {x: 360, y: 100}],
                 ["Coin", {x: 420, y: 100}],
                 ["Coin", {x: 480, y: 100}],
-                ["Coin", {x: 800, y: 300}],
-                ["Coin", {x: 860, y: 300}],
-                ["Coin", {x: 920, y: 300}],
-                ["Coin", {x: 980, y: 300}],
+                ["Coin", {x: 800, y: 500}],
+                ["Coin", {x: 860, y: 500}],
+                ["Coin", {x: 920, y: 500}],
+                ["Coin", {x: 980, y: 500}],
                 ["Coin", {x: 1040, y: 300}],
                 ["Coin", {x: 1100, y: 300}],
                 ["Coin", {x: 1160, y: 300}],
@@ -210,6 +222,11 @@
 
         Q.scene("endGame",function(stage) {
             alert("game over");
+            window.location = "";
+        });
+
+        Q.scene("winGame",function(stage) {
+            alert("You've won!");
             window.location = "";
         });
 
@@ -244,7 +261,7 @@
         });
 
         //load assets
-        Q.load("tiles_housesheet.png, cat.png, slime.png, fly.png, level1.tmx, coin.png", function() {
+        Q.load("tiles_housesheet.png, cat.png, nyan.png, beedog.png, level1.tmx, coin.png", function() {
             Q.sheet("tiles", "tiles_housesheet.png", { tilew: 70, tileh: 70});
             Q.stageScene("level1");
             Q.stageScene("gameStats",1);
